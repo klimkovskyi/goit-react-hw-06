@@ -1,14 +1,12 @@
 import s from "./SearchBox.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { setInputValue } from "../../redux/contacts/action";
+import { useDispatch } from "react-redux";
+import { filterContacts } from "../../redux/filtersSlice";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
-  const inputValue = useSelector(state => state.contacts.inputValue);
 
   const handleChangeInput = e => {
-    dispatch(setInputValue(e.target.value));
-    console.log(e.target.value);
+    dispatch(filterContacts(e.target.value));
   };
 
   return (
@@ -20,7 +18,6 @@ const SearchBox = () => {
           id="searchInput"
           name="searchInput"
           onChange={handleChangeInput}
-          value={inputValue}
         />
       </label>
     </div>

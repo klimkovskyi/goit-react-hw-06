@@ -3,11 +3,11 @@ import Contact from "../Contact/Contact";
 import s from "./ContactList.module.css";
 
 const ContactList = () => {
-  const contact = useSelector(state => state.contacts.contacts);
-  const inputValue = useSelector(state => state.contacts.inputValue);
+  const contacts = useSelector(state => state.contacts.items);
+  const inputValue = useSelector(state => state.filter.filter.name);
 
-  const filteredContacts = contact.filter(contact =>
-    contact.name.toLowerCase().includes(inputValue.toLowerCase())
+  const filteredContacts = contacts.filter(item =>
+    item.name.toLowerCase().includes(inputValue.toLowerCase())
   );
   return (
     <div className={s.wrapper}>
